@@ -9,7 +9,7 @@ pipeline {
     stage ('Upload to AWS') {
       steps {
         sh 'echo "Hello World"'
-        withAWS(region:'eu-west-1') {
+        withAWS(region:'us-east-2') {
           s3Upload(file:'index.html', bucket:'jenkinss3leanne', path:'index.html')
         }        
         sh '''
