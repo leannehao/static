@@ -3,12 +3,12 @@ pipeline {
   stages {
     stage ('Lint HTML') {
       steps {
-        sh "tidy -q -e *.html"
+        sh 'echo "Linting"'
+        //sh "tidy -q -e *.html"
       }
     }
     stage ('Upload to AWS') {
       steps {
-        sh 'echo "Hello World"'
         withAWS(region:'us-east-2', credentials:'aws-static') {
           s3Upload(file:'index.html', bucket:'jenkinss3leanne', path:'index.html')
         }        
